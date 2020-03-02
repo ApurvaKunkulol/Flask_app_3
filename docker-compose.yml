@@ -1,0 +1,26 @@
+version: '3'
+services:
+  flask:
+    container_name: second_flask_assignment
+    image: second_flask_image
+#    build: .
+    volumes:
+      - .:/home/sagar/Apurva/Works/Flask_app_3
+    ports:
+      - "7000:7000"
+    restart: always
+    # command
+    environment:
+      JWT_SECRET_KEY: "r@@t"
+      APP_ENV: "dev"
+      APP_PORT: 7000
+      APP_DEBUG: "false"
+      MONGODB_HOSTNAME: mongodb
+      FLASK_ENV: development
+    networks:
+      - default
+
+
+networks:
+  default:
+    driver: bridge
